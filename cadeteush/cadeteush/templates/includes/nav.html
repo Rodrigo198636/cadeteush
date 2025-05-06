@@ -1,0 +1,280 @@
+<style>
+    .service-box {
+  height: 500px;  /* Ajusta la altura según sea necesario */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center; /* Centra los íconos horizontalmente */
+  align-items: center; /* Centra los íconos verticalmente */
+  gap: 20px; /* Espacio entre los íconos */
+  height: 100vh; /* Asegura que los íconos se centren verticalmente en toda la pantalla */
+}
+
+.social-icon {
+  font-size: 3rem; /* Tamaño del ícono */
+  color: #333; /* Color inicial de los íconos */
+  text-decoration: none; /* Elimina el subrayado */
+  transition: color 0.3s ease;
+}
+
+/* Hover personalizado para cada red social */
+.social-icon.facebook:hover {
+  color: #3b5998; /* Azul de Facebook */
+}
+
+.social-icon.whatsapp:hover {
+  color: #25D366; /* Verde de WhatsApp */
+}
+
+.social-icon.instagram:hover {
+  color: #E4405F; /* Rosa de Instagram */
+}
+
+.social-icon.telegram:hover {
+  color: #0088cc; /* Azul de Telegram */
+}
+
+.social-icon.gmail:hover {
+  color: #DB4437; /* Rojo de Gmail */
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Asegura que el body ocupe toda la altura */
+  width: 100%;
+}
+
+.background-container {
+  position: relative; /* Usamos relative para poder posicionar el contenido en el centro */
+  background-size: cover;
+  background-position: center;
+  height: 100vh; /* Puedes ajustar la altura según lo necesites */
+  width: 100%; /* Asegura que ocupe todo el ancho */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Evita que el contenido se desborde si la imagen es más grande */
+}
+
+.text-overlay {
+  text-align: center;
+  color: white; /* Color del texto */
+  font-size: 2rem;
+  z-index: 2; /* Asegura que el texto esté sobre la imagen */
+}
+
+.text-overlay h1 {
+  font-size: 3rem; /* Tamaño del título */
+  margin-bottom: 10px;
+}
+
+.text-overlay p {
+  font-size: 1.5rem; /* Tamaño del párrafo */
+}
+
+
+
+
+
+
+</style>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">
+        <i class="fas fa-home"></i> Inicio
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">
+        <i class="fas fa-user"></i> Perfil
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">
+        <i class="fas fa-phone"></i> Contacto
+      </button>
+    </li>
+    <li class="nav-item" role="inscription">
+      <button class="nav-link" id="inscription-tab" data-bs-toggle="tab" data-bs-target="#inscription-tab-pane" type="button" role="tab" aria-controls="inscription-tab-pane" aria-selected="false">
+        <i class="fas fa-toolbox"></i> Trabaja con Nosotros
+      </button>
+    </li>
+  </ul>
+  
+  <div class="tab-content" id="myTabContent">
+    <!-- Pestaña Inicio -->
+    {% load static %}
+    <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+        <div class="background-container" style="background-image: url('{% static 'images/home1.png' %}'); background-size: cover; background-position: center; height: 100vh; display: flex; justify-content: center; align-items: center;">
+          <div class="text-overlay">
+            <h1>Bienvenidos</h1>
+            <p>Disfruta de nuestro servicio</p>
+          </div>
+        </div>
+    </div>
+      
+      
+    
+    <!-- Pestaña Perfil -->
+    <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+        <p class="font-weight-bold text-muted text-center mt-2">¡Olvídate de los trámites! En nuestra empresa de cadetería, te ofrecemos un servicio eficiente y seguro para realizar cualquier trámite personal sin que tengas que salir de tu hogar. Nuestros cadetes se encargan de todo, ahorrándote tiempo y esfuerzo. ¡Nosotros lo hacemos por ti!</p>
+        
+        {% load static %}
+        <div class="container mt-5">
+          <div class="row">
+            <!-- Primer cuadro: Servicio -->
+            <div class="col-md-6 mb-4">
+              <div class="service-box" style="background-image: url('{% static 'images/servicio.png' %}'); background-size: cover; background-position: center center; background-repeat: no-repeat; border-radius: 15px;" class="d-flex justify-content-center align-items-center text-center text-white" onclick="window.location.href=''">
+                <div class="service-text text-white p-3">
+                  <h3>Nuestro Servicio</h3>
+                  <p>Haz clic para conocer más</p>
+                </div>
+              </div>
+            </div>
+        
+            <!-- Segundo cuadro: Formulario de solicitud -->
+            <div class="col-md-6 mb-4">
+              <div class="service-box" style="background-image: url('{% static 'images/solicitar.png' %}'); background-size: cover; background-position: center center; background-repeat: no-repeat; border-radius: 15px;" class="d-flex justify-content-center align-items-center text-center text-white" onclick="window.location.href=''">
+                <div class="service-text text-white p-3">
+                  <h3>Solicitar servicio</h3>
+                  <p>Haz clic para solicitar nuestro servicio</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>      
+      </div>    
+            
+    
+    <!-- Pestaña Contacto -->
+    <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+        <p class="font-weight-bold fs-2 text-primary text-center mt-2">Contáctanos a través de nuestros medios...</p>
+      
+        <!-- Enlaces de redes sociales (solo íconos) -->
+        <div class="social-links">
+          <a href="https://www.facebook.com/tu_pagina" target="_blank" class="social-icon facebook">
+            <i class="fab fa-facebook-square"></i>
+          </a>
+          <a href="https://wa.me/tu_numero_de_whatsapp" target="_blank" class="social-icon whatsapp">
+            <i class="fab fa-whatsapp"></i>
+          </a>
+          <a href="https://www.instagram.com/tu_usuario" target="_blank" class="social-icon instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://t.me/tu_usuario" target="_blank" class="social-icon telegram">
+            <i class="fab fa-telegram"></i>
+          </a>
+          <a href="mailto:tu_email@gmail.com" target="_blank" class="social-icon gmail">
+            <i class="fab fa-google"></i>
+          </a>
+        </div>
+      </div>
+      
+      
+      
+    
+    <div class="tab-pane fade" id="inscription-tab-pane" role="tabpanel" aria-labelledby="inscription-tab" tabindex="0">
+        <p class="font-weight-bold text-muted text-center mt-2">¡Únete a nuestro equipo! Si estás buscando una nueva oportunidad laboral, trabaja con nosotros. Solo tienes que inscribirte y nuestro equipo de trabajo se pondrá en contacto contigo tan pronto como verifiquemos tu solicitud. ¡Esperamos conocerte pronto!</p>
+      
+        <!-- Formulario de Inscripción -->
+        <div class="container d-flex justify-content-center">
+          <div class="col-md-6"> <!-- Limitar el ancho del formulario -->
+            <form action="{% url 'inscripcion' %}" method="POST">
+              {% csrf_token %}
+
+              <p class="font-weight-bold fs-3 text-primary text-center">Inscríbete a continuación</p>
+              
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre Completo</label>
+                <input type="text" class="form-control" id="nombre" name="nombre" required>
+              </div>
+      
+              <div class="mb-3">
+                <label for="edad" class="form-label">Edad</label>
+                <input type="number" class="form-control" id="edad" name="edad" required>
+              </div>
+      
+              <div class="mb-3">
+                <label for="domicilio" class="form-label">Domicilio</label>
+                <input type="text" class="form-control" id="domicilio" name="domicilio" required>
+              </div>
+      
+              <div class="mb-3">
+                <label for="email" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+      
+              <div class="mb-3">
+                <label for="telefono" class="form-label">Número de Teléfono</label>
+                <input type="tel" class="form-control" id="telefono" name="telefono" required>
+              </div>
+      
+              <div class="mb-3">
+                <label for="vehiculo" class="form-label">¿Posee Vehículo?</label>
+                <select class="form-select" id="vehiculo" name="vehiculo" required>
+                  <option value="">Seleccionar...</option>
+                  <option value="Sí">Sí</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+      
+              <div class="mb-3">
+                <label for="disponibilidad" class="form-label">Disponibilidad Horaria</label>
+                <input type="text" class="form-control" id="disponibilidad" name="disponibilidad" required>
+              </div>
+      
+              <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="terminos" name="terminos" required>
+                <label class="form-check-label" for="terminos">Acepto los 
+                  <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Términos y Condiciones</a>
+                </label>
+              </div>
+
+              <!-- Modal de terminos y condiciones-->
+                <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                        <h5 class="modal-title" id="termsModalLabel">Bienvenido a Cadete Ush. Al utilizar nuestros servicios, aceptas cumplir con los siguientes términos y condiciones. Por favor, léelos atentamente.</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                        <!-- Aquí van los Términos y Condiciones -->
+                        <p><strong>1. Aceptación de los Términos: Al utilizar nuestros servicios, el cliente acepta estos Términos y Condiciones, que pueden ser actualizados en cualquier momento. Es responsabilidad del cliente revisar esta página periódicamente para conocer las modificaciones.</strong></p>
+                        <p><strong>2. Descripción del Servicio: El servicio de cadetería proporcionado por [Nombre de la empresa] consiste en la realización de trámites y transportes de documentos, productos y otros bienes que el cliente necesite enviar o recibir sin que tenga que moverse de su hogar u oficina.</strong></p>
+                        <p><strong>3. Responsabilidades del Cliente: Proporcionar toda la información necesaria de manera veraz y completa.
+                                      Asegurarse de que los bienes entregados para el servicio sean aptos para el transporte.                            
+                                      Establecer un lugar de entrega claro y accesible para recibir los bienes o documentos.</strong></p>
+                        <p><strong>4. Responsabilidades del Cadete: El cadete asignado será responsable de: Transportar de manera segura los documentos, productos o bienes que le sean confiados por el cliente.
+                                      Asegurarse de que los bienes sean entregados al destinatario final en el estado en que fueron recibidos.
+                                      Ser responsable de cualquier accidente o daño ocurrido mientras se lleva a cabo el servicio, tanto si es víctima como si causa el accidente antes, durante o después de la realización del servicio.
+                                      Cuidar y asegurar la documentación y cualquier otro bien confiado por el cliente hasta que sea entregado al destinatario correspondiente.</strong></p>
+                        <p><strong>5. Confidencialidad y Seguridad: El cadete se compromete a mantener la confidencialidad sobre la información y los bienes entregados por el cliente. Los documentos personales, productos o bienes no serán compartidos ni divulgados bajo ninguna circunstancia, salvo que sea requerido por las autoridades competentes.</strong></p>
+                        <p><strong>6. Modificaciones a los Términos: Cadete Ush se reserva el derecho de modificar estos términos y condiciones en cualquier momento. Las modificaciones serán publicadas en esta página y entrarán en vigor inmediatamente. El uso continuo del servicio después de dichas modificaciones implica la aceptación de los nuevos términos.</strong></p>
+                        <p><strong>7. Cancelaciones y Reembolsos:  El cliente no puede cancelar el servicio en una vez que el cadete haya iniciado el traslado, no se efectuarán reembolsos.                         
+                                      En situaciones excepcionales, como cancelaciones por causas fuera del control de Cadete Ush, se evaluará si corresponde un reembolso o ajuste en el servicio.</strong></p>                        
+                        <p><strong>9. Limitación de Responsabilidad: Cadete Ush no será responsable por daños indirectos, pérdidas de ganancias o daños imprevistos que surjan debido a retrasos, accidentes o cualquier otra situación fuera de su control.</strong></p>
+                        <p><strong>10. Ley Aplicable: Este acuerdo se regirá por las leyes del país en el que se presta el servicio, y cualquier disputa relacionada con estos términos será resuelta en los tribunales competentes de la provincia de Tierra del Fuego A. e I. del A.S.</strong></p>
+                        </div>
+                    </div>
+                        <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-4">Enviar Solicitud</button>
+                </div>            
+      
+              
+            </form>
+          </div>
+        </div>
+      </div>
+      
+  </div>
+  

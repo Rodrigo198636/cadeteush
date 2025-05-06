@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <h2>Formulario de Inscripción</h2>
+    <form action="{% url 'inscripcion' %}" method="POST">
+      {% csrf_token %}
+      
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre Completo</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="edad" class="form-label">Edad</label>
+        <input type="number" class="form-control" id="edad" name="edad" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="domicilio" class="form-label">Domicilio</label>
+        <input type="text" class="form-control" id="domicilio" name="domicilio" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Correo Electrónico</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="telefono" class="form-label">Número de Teléfono</label>
+        <input type="tel" class="form-control" id="telefono" name="telefono" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="vehiculo" class="form-label">¿Posee Vehículo?</label>
+        <select class="form-select" id="vehiculo" name="vehiculo" required>
+          <option value="">Seleccionar...</option>
+          <option value="Sí">Sí</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="disponibilidad" class="form-label">Disponibilidad Horaria</label>
+        <input type="text" class="form-control" id="disponibilidad" name="disponibilidad" required>
+      </div>
+
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="terminos" name="terminos" required>
+        <label class="form-check-label" for="terminos">Acepto los <a href="#">Términos y Condiciones</a></label>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+    </form>
+  </div>
+{% endblock %}

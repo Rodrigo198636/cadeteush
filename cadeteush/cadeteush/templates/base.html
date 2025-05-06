@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <title>Cadete Ush</title>
+
+    <style>
+      /* Asegura que el cuerpo ocupe toda la altura de la ventana */
+      html, body {
+        height: 100%;
+        margin: 0;
+      }
+
+      /* Usa Flexbox para organizar la página */
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* El contenido principal debe ocupar el espacio disponible */
+      .content {
+        flex: 1;
+      }
+
+      /* Estilo del footer */
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-top: 1px solid #e1e1e1;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+        {% include 'includes/nav.html' %}
+    </header>
+
+    <div class="content">
+        {% block content %}
+        <!-- Aquí va el contenido principal de la página -->
+        {% endblock %}
+    </div>
+
+    {% block footer %}
+        <footer>
+            @2025 <a href="https://startling-medovik-1a0f96.netlify.app" target="_blank">RodriDev</a> - All rights reserved
+        </footer>
+    {% endblock %}
+
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+  </body>
+</html>
