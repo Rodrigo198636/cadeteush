@@ -104,6 +104,11 @@ html, body {
         <i class="fas fa-toolbox"></i> Trabaja con Nosotros
       </button>
     </li>
+    <li class="nav-item" role="terminos">
+      <button class="nav-link" id="terminos-tab" data-bs-toggle="tab" data-bs-target="#terminos-tab-pane" type="button" role="tab" aria-controls="terminos-tab-pane" aria-selected="false">
+        <i class="fas fa-file-contract"></i> Términos y condiciones
+      </button>
+    </li>
   </ul>
   
   <div class="tab-content" id="myTabContent">
@@ -129,23 +134,107 @@ html, body {
           <div class="row">
             <!-- Primer cuadro: Servicio -->
             <div class="col-md-6 mb-4">
-              <div class="service-box" style="background-image: url('{% static 'images/servicio.png' %}'); background-size: cover; background-position: center center; background-repeat: no-repeat; border-radius: 15px;" class="d-flex justify-content-center align-items-center text-center text-white" onclick="window.location.href=''">
+              <div class="service-box" style="background-image: url('{% static 'images/servicio.png' %}'); background-size: cover; background-position: center center; background-repeat: no-repeat; border-radius: 15px;" class="d-flex justify-content-center align-items-center text-center text-white">
                 <div class="service-text text-white p-3">
                   <h3>Nuestro Servicio</h3>
-                  <p>Haz clic para conocer más</p>
+                  <a class="text-white" href="#" data-bs-toggle="modal" data-bs-target="#serviceModal">Haz click aquí para conocer nuestro servicio</a>
                 </div>
               </div>
             </div>
+            
+            <!-- Modal de nuestro servicio-->
+            <div class="modal fade" id="serviceModal" tabindex="-1" aria-labelledby="serviceModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="serviceModalLabel">En Cadete Ush, te ahorramos tiempo. Sabemos lo importante que es optimizar tu tiempo, por eso, ofrecemos un servicio especializado que te permite delegar tus trámites personales. Desde el pago de tus servicios basicos hasta el traslado de paqueteria, nuestro equipo se encarga de todo para que tú solo tengas que disfrutar de los resultados. Confía en nosotros para hacer más fácil y rápido.</h5>                    
+                  </div>
+                  <div class="modal-body">
+                    <!-- Aquí van la descripcion del servicio -->
+                    <p><strong><i class="fas fa-handshake" style="color: #007bff;"></i> Solicita el servicio de cadete:</strong> Solo tienes que clickear en solicitar servicio.</p>
+                    <p><strong><i class="fas fa-motorcycle" style="color: #ff0000;"></i> El cadete se dirige a tu domicilio:</strong> Un miembro de nuestro equipo se desplaza a tu ubicación, ya sea para recoger un paquete o gestionar un trámite personal.</p>
+                    <p><strong><i class="fas fa-paper-plane" style="color: #e4f30ff5;"></i> Traslado y gestión de trámites:</strong> El cadete lleva el paquete al destino indicado o realiza el trámite correspondiente, según tu solicitud.</p>
+                    <p><strong><i class="fas fa-envelope" style="color: #00ff22;"></i> Envío de comprobantes:</strong> Una vez completado el proceso, te enviamos los comprobantes o la documentación correspondiente, asegurándote que todo se haya realizado de manera eficiente y sin inconvenientes.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
         
             <!-- Segundo cuadro: Formulario de solicitud -->
             <div class="col-md-6 mb-4">
-              <div class="service-box" style="background-image: url('{% static 'images/solicitar.png' %}'); background-size: cover; background-position: center center; background-repeat: no-repeat; border-radius: 15px;" class="d-flex justify-content-center align-items-center text-center text-white" onclick="window.location.href=''">
+              <div class="service-box" style="background-image: url('{% static 'images/solicitar.png' %}'); background-size: cover; background-position: center center; background-repeat: no-repeat; border-radius: 15px;" class="d-flex justify-content-center align-items-center text-center text-white">
                 <div class="service-text text-white p-3">
                   <h3>Solicitar servicio</h3>
-                  <p>Haz clic para solicitar nuestro servicio</p>
+                  <a class="text-white" href="#" data-bs-toggle="modal" data-bs-target="#solicitarModal">Haz click aquí para solicitar nuestro servicio</a>
                 </div>
               </div>
             </div>
+
+            <!-- Modal para solicitar el servicio -->
+            <div class="modal fade" id="solicitarModal" tabindex="-1" aria-labelledby="solicitarModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="solicitarModalLabel">Solicita el Servicio de Cadete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">                   
+                    <!-- Formulario para solicitar el servicio -->
+                    <form action="{% url 'solicitar_servicio' %}" method="POST">
+                      {% csrf_token %}
+                      <!-- Nombre del solicitante -->
+                      <div class="mb-3">
+                        <label for="nombre" class="form-label">Nombre del solicitante</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                      </div>
+
+                      <!-- Teléfono con característica local -->
+                      <div class="mb-3">
+                        <label for="telefono" class="form-label">Teléfono (incluye la característica local)</label>
+                        <input type="tel" class="form-control" id="telefono" name="telefono" placeholder="Ejemplo: 02901478954" required>
+                      </div>
+
+                      <!-- Correo electrónico -->
+                      <div class="mb-3">
+                        <label for="email" class="form-label">Correo electrónico</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                      </div>
+
+                      <!-- Trámite a realizar -->
+                      <div class="mb-3">
+                        <label for="tramite" class="form-label">Trámite a realizar</label>
+                        <textarea class="form-control" id="tramite" name="tramite" rows="3" required></textarea>
+                      </div>
+
+                      <!-- Aceptar términos y condiciones -->
+                      <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="terminos" name="terminos" required>
+                        <label class="form-check-label" for="terminos">
+                          Acepto los Términos y Condiciones</a>
+                        </label>
+                      </div>
+
+
+                      <!-- Botón de envío -->
+                      <button type="submit" class="btn btn-primary">Enviar Solicitud</button>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                  </div>
+                </div>
+                <script>
+                  {% if message %}
+                    alert("{{ message }}");
+                    $('#solicitarModal').modal('hide');
+                  {% endif %}
+                </script>  
+              </div>
+            </div>                   
           </div>
         </div>      
       </div>    
@@ -184,6 +273,7 @@ html, body {
         <!-- Formulario de Inscripción -->
         <div class="container d-flex justify-content-center">
           <div class="col-md-6"> <!-- Limitar el ancho del formulario -->
+
             <form action="{% url 'inscripcion' %}" method="POST">
               {% csrf_token %}
 
@@ -246,7 +336,7 @@ html, body {
                         <div class="modal-body">
                         <!-- Aquí van los Términos y Condiciones -->
                         <p><strong>1. Aceptación de los Términos: Al utilizar nuestros servicios, el cliente acepta estos Términos y Condiciones, que pueden ser actualizados en cualquier momento. Es responsabilidad del cliente revisar esta página periódicamente para conocer las modificaciones.</strong></p>
-                        <p><strong>2. Descripción del Servicio: El servicio de cadetería proporcionado por [Nombre de la empresa] consiste en la realización de trámites y transportes de documentos, productos y otros bienes que el cliente necesite enviar o recibir sin que tenga que moverse de su hogar u oficina.</strong></p>
+                        <p><strong>2. Descripción del Servicio: El servicio de cadetería proporcionado por Cadete Ush consiste en la realización de trámites y transportes de documentos, productos y otros bienes que el cliente necesite enviar o recibir sin que tenga que moverse de su hogar u oficina.</strong></p>
                         <p><strong>3. Responsabilidades del Cliente: Proporcionar toda la información necesaria de manera veraz y completa.
                                       Asegurarse de que los bienes entregados para el servicio sean aptos para el transporte.                            
                                       Establecer un lugar de entrega claro y accesible para recibir los bienes o documentos.</strong></p>
@@ -266,15 +356,38 @@ html, body {
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                         </div>
                     </div>
-                    </div>
+                  </div>
                     <button type="submit" class="btn btn-primary mb-4">Enviar Solicitud</button>
                 </div>            
       
               
             </form>
           </div>
+          <script>
+            {% if message %}
+              alert("{{ message }}");
+              $('#solicitarModal').modal('hide');              
+            {% endif %}
+          </script>
         </div>
+
+        <div class="tab-pane fade" id="terminos-tab-pane" role="tabpanel" aria-labelledby="terminos-tab">
+          <h5 class="font-weight-bold fs-2 text-primary text-center mt-2 mb-2">Términos y Condiciones</h5>
+          <p><strong>1. Aceptación de los Términos:</strong> Al utilizar nuestros servicios, el cliente acepta estos Términos y Condiciones...</p>
+          <p><strong>3. Responsabilidades del Cliente:</strong> Proporcionar toda la información necesaria de manera veraz y completa...</p>
+          <p><strong>4. Responsabilidad sobre la Remuneración del Cadete:</strong> El cliente es responsable de la remuneración acordada con el cadete por el servicio realizado una vez que se haya solicitado.</p>
+          <p><strong>5. Responsabilidad sobre la Documentación o Trámite:</strong> El cliente es responsable de la documentación o trámite que entregue al cadete. Esto incluye asegurarse de que la información entregada sea correcta y adecuada para el servicio solicitado.</p>
+          <p><strong>6. No hay Reembolso:</strong> Una vez solicitado el servicio, no se realizarán reembolsos, salvo situaciones excepcionales acordadas previamente. En caso de cancelación, el cadete podrá solicitar un resarcimiento económico por el tiempo y desplazamiento realizado, de acuerdo con lo pactado con el cliente.</p>
+          <p><strong>7. Comunicación con el Cadete:</strong> El cliente deberá mantenerse en contacto con el cadete durante todo el proceso del trámite o entrega de la documentación, asegurándose de que la comunicación sea fluida y efectiva.</p>          
+          <p><strong>8. Modificaciones a los Términos:</strong> Cadete Ush se reserva el derecho de modificar estos términos y condiciones en cualquier momento. Las modificaciones serán publicadas en esta página y entrarán en vigor inmediatamente. El uso continuo del servicio después de dichas modificaciones implica la aceptación de los nuevos términos.</p>
+          <p><strong>9. Limitación de Responsabilidad:</strong> Cadete Ush no será responsable por daños indirectos, pérdidas de ganancias o daños imprevistos que surjan debido a retrasos, accidentes o cualquier otra situación fuera de su control.</p>
+          <p><strong>10. Ley Aplicable:</strong> Este acuerdo se regirá por las leyes del país en el que se presta el servicio, y cualquier disputa relacionada con estos términos será resuelta en los tribunales competentes de la provincia de Tierra del Fuego A. e I. del A.S.</p>
+        </div>
+        
+
       </div>
       
   </div>
   
+  
+ 
